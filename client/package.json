@@ -1,0 +1,32 @@
+{
+  "name": "telyserver",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A note-taking app.",
+  "repository": "https://github.com/FretlessJS-2016-03/notely-canelasanna.git",
+    "type": "git",
+    "url": "git+ssh://git@github.com/FretlessJS-2016-03/notely-canelasanna.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "eslint": "^2.5.3",
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server app -a 0.0.0.0 -p 8080 -c-1",
+    "prestart": "npm install",
+    "postinstall": "bower install",
+    "preupdate-webdriver": "npm install"
+  },
+  "bugs": {
+    "url": "https://github.com/FretlessJS-2016-03/notely-canelasanna/issues"
+  },
+  "homepage": "https://github.com/FretlessJS-2016-03/notely-canelasanna#readme",
+  "main": "app.js",
+  "dependencies": {
+    "http-server": "^0.6.1",
+    "bower": "^1.7.7"
+  },
+  "author": "Anna Canelas"
+}
