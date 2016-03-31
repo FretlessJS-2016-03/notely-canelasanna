@@ -26,18 +26,39 @@
       return _this.notes;
     };
 
-    _this.create = function(note){
+    _this.create = function(note) {
       return $http.post('http://localhost:3030/notes', {
         note: note
-      }).then(function(response){
+      }).then(function(response) {
         _this.notes.unshift(response.data.note);
       });
     };
+
+    _this.update = function(note) {
+      return $http.put('http://localhost:3030/notes/' + note._id, {
+        note: {
+          title: note.title,
+          body_html: note.body_html
+        }
+      }).then(function(response) {
+        _this.replaceNote(response.data.note);  // making this work
+      });
+    };
+
+    _this.replaceNote = function(updatedNote) {
+      for (var i = 0; i < _this.notes.length; i++) {
+        if (_this.notes[i]._id === updatedNote._id) {
+          _this.notes[i] = updatedNote;
+          return;
+        }
+      }
+    };
+
     _this.findById = function(noteId) {
-      for (var i = 0; i<_this.notes.length; i++) {
-        //if the ids match return the current note
+      for (var i = 0; i < _this.notes.length; i++) {
+        // If the IDs match, return the current note
         if (_this.notes[i]._id === noteId) {
-          return _this.notes[i];
+          return angular.copy(_this.notes[i]);
         }
       }
       return {};

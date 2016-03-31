@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
     <nav class="col-xs-4" id="sidebar">
-      <button class="new-note btn btn-default">
+      <button class="new-note btn btn-default" ui-sref="notes.form({ noteId: undefined })">
         New Note
       </button>
       <ul id="notes">
-        <li ng-repeat='note in notes'>
-          <!-- <div class="title"> -->
+        <li ng-repeat="note in notes | orderBy:'-updated_at' track by note._id">
+          <div class="title">
             <a ui-sref="notes.form({ noteId: note._id })">{{ note.title }}</a>
-        <div class="body">
+          </div>
+          <div class="body">
             {{ note.body_html }}
-        </div>
+          </div>
         </li>
       </ul>
     </nav>
